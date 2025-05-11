@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Face Attendance System</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            height: 100vh;
+            padding-top: 50px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            margin: 20px;
+            width: 380px;
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        label {
+            font-weight: 600;
+            color: #444;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #fafafa;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #4A90E2;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #357ABD;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            color: #8c8c8c;
+            font-size: 14px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container input[type="submit"] {
+            background: #505f69;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button-container input[type="submit"]:hover {
+            background: #3d4a53;
+        }
+
+    </style>
+</head>
+<body>
+    <h2>Smart Face Attendance System</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <form method="POST" action="/register">
+            <label for="name">Enter Name to Register:</label>
+            <input type="text" name="name" id="name" placeholder="Enter Full Name" required>
+            <input type="submit" value="Register Face">
+        </form>
+
+        <div class="button-container">
+            <form method="GET" action="/mark">
+                <input type="submit" value="Mark Attendance">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
